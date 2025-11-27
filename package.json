@@ -1,0 +1,12 @@
+{
+  "name": "chat-room",
+  "version": "1.0.0",
+  "description": "简单的网络聊天室",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "ws": "^8.14.2"
+  }
+}

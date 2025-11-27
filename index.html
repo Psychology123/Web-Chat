@@ -1,0 +1,178 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  
+  <!-- Apple 移动端优化 -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Messages" />
+  
+  <title>网络聊天室</title>
+
+  <!-- Apple-like system font -->
+  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- New UI stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="app-shell">
+
+    <!-- ===== Sidebar ===== -->
+    <aside class="sidebar glass" aria-label="sidebar">
+      <div class="sidebar-top">
+        <div class="brand">
+          <div class="brand-icon" aria-hidden="true">💬</div>
+          <div class="brand-text">
+            <h2 class="brand-title">多人网络聊天室</h2>
+            <p class="brand-subtitle">Online Chat Room</p>
+          </div>
+        </div>
+
+        <!-- Search (UI-only, no business impact) -->
+        <div class="search">
+          <input class="search-input" placeholder="搜索消息 / 用户" disabled />
+          <span class="search-hint"></span>
+        </div>
+
+        <!-- Connection status (business id preserved) -->
+        <div class="status-card">
+          <div class="status-left">
+            <span class="status-dot connecting" id="statusDot"></span>
+            <div class="status-meta">
+              <div class="status-title">连接状态</div>
+              <div id="status" class="status-text">正在连接...</div>
+            </div>
+          </div>
+          <div class="status-right">
+            <div class="latency">
+              <span class="latency-label">延迟</span>
+              <span id="latency" class="latency-value">-- ms</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick stats -->
+        <div class="quick-grid">
+          <div class="quick-card">
+            <div class="quick-value" id="onlineCount">0</div>
+            <div class="quick-label">在线人数</div>
+          </div>
+          <div class="quick-card">
+            <div class="quick-value" id="messageCount">0</div>
+            <div class="quick-label">总消息</div>
+          </div>
+          <div class="quick-card">
+            <div class="quick-value" id="myMessageCount">0</div>
+            <div class="quick-label">我的消息</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Users list placeholder (rich content UI-only) -->
+      <div class="section">
+        <div class="section-title">在线用户</div>
+        <div class="users-list">
+          <div class="user-item shimmer"></div>
+          <div class="user-item shimmer"></div>
+          <div class="user-item shimmer"></div>
+          <div class="user-tip">当前版本未下发用户列表</div>
+        </div>
+      </div>
+
+      <!-- Actions (id preserved for your existing buttons) -->
+      <div class="section">
+        <div class="section-title">操作</div>
+        <div class="actions">
+          <button id="clearBtn" class="btn secondary">清空消息</button>
+          <button id="themeBtn" class="btn">切换主题</button>
+        </div>
+      </div>
+
+      <footer class="sidebar-footer">
+        <div>Author:Sander</div>
+        <div>Online Chat Room:网络聊天室</div>
+      </footer>
+    </aside>
+
+    <!-- ===== Main Chat Area ===== -->
+    <section class="chat-area" aria-label="chat">
+      <header class="chat-header glass">
+        <div class="chat-header-left">
+          <h1 class="chat-title">群聊天室</h1>
+          <p class="chat-subtitle">
+            <span id="onlineCountHeader">0 人在线</span>
+            <span class="dot-sep">·</span>
+            <span class="room-badge">Public Room</span>
+          </p>
+        </div>
+
+        <div class="chat-header-right">
+          <button class="icon-btn" aria-label="info">
+            <span class="icon">ℹ️</span>
+          </button>
+        </div>
+      </header>
+
+      <main class="messages" id="messages" aria-live="polite">
+        <div class="empty">
+          <div class="empty-hero">✨</div>
+          <p class="empty-title">暂无消息</p>
+          <p class="empty-subtitle">输入昵称与消息，开始你的第一段对话。</p>
+        </div>
+      </main>
+
+      <!-- Input Bar (business ids preserved) -->
+      <footer class="input-bar glass">
+        <div class="input-left">
+          <label class="field">
+            <span class="field-label">昵称</span>
+            <input
+              type="text"
+              id="username"
+              class="username-input"
+              placeholder=""
+              maxlength="20"
+              autocomplete="off"
+            />
+          </label>
+        </div>
+
+        <div class="input-center">
+          <textarea
+            id="messageInput"
+            class="message-input"
+            placeholder=""
+            maxlength="500"
+            disabled
+          ></textarea>
+          <div class="input-hints">
+            <span class="hint">Shift + Enter 换行</span>
+            <span class="hint muted">最多 500 字</span>
+          </div>
+        </div>
+
+        <div class="input-right">
+          <button id="sendBtn" class="send-btn" disabled>
+            发送
+          </button>
+        </div>
+      </footer>
+    </section>
+
+  </div>
+
+  <!-- business logic untouched -->
+  <script src="client.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
